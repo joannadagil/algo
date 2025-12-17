@@ -16,8 +16,7 @@ class Cache:
 
 
     class Queue:
-        # TODO
-
+    
         def __init__(self):
             self.head = None
             self.tail = None
@@ -36,16 +35,16 @@ class Cache:
                 self.tail.next = new_node
                 new_node.prev = self.tail
                 self.tail = new_node
-                
+
             return new_node
 
-        def pop(self):
+        def pop_head(self):
             # removing from head
 
             if not self.head:
                 return None
 
-            node_value = self.head.value
+            node = self.head
 
             self.head = self.head.next
 
@@ -54,42 +53,58 @@ class Cache:
             else:
                 self.tail = None
 
-            return node_value
+            return node.value
         
         def pop(self, node):
             # removing specific node
 
             if not node:
                 return None
+
+            # setting prev
             if node.prev:
                 node.prev.next = node.next
             else:
                 self.head = node.next
+
+            # setting next
             if node.next:
                 node.next.prev = node.prev
             else:
                 self.tail = node.prev
-            return node.value
 
-    
+            return node.value
 
     def __init__(self, size):
         self.size = size
         self.cache = dict()
-        self.queue = Queue()
+        self.queue = self.Queue()
 
-    # TODO
     def write(self, value):
         
         if (value in self.cache):
+            # HIT case, so we need to update its position in LRU queue to newest
+            
+            old_node = self.cache[value]
+            self.queue.pop(old_node)
 
-            return True  # HIT
+            new_node = self.queue.append(value)
+            self.cache[value] = new_node
+
+            return True 
         
+        # MISS case
+
         if len(self.cache) >= self.size:
-            oldest = self.queue.popleft()
-            self.cache.remove(oldest)
-        self.cache.add(value)
-        self.queue.append(value)
+            # cache is full, need to remove oldest
+            oldest = self.queue.pop_head()
+            self.cache.pop(oldest)
+
+        # putting new value to the newest position of queue
+        new_node = self.queue.append(value)
+        # putting new value to cache (with reference to its node in queue)
+        self.cache[value] = new_node
+
         return False  # MISS
 
     # TODO
