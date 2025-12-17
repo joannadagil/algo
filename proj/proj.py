@@ -1,18 +1,98 @@
+''' 
+write:
+- sprawdza czy wartosc jest w cache
+    - jesli tak to zwraca HIT i aktualizuje jej pozycje w kolejce LRU na najnowsza
+    - jesli nie to sprawdza czy mamy miejsce w cache (jeśli nie ma to usuwa najstarsze w LRU) i zwraca MISS i dodaje wartosc do cache i kolejki LRU
+
+'''
 
 class Cache:
-    size: int
-    cache: dict
-    queue: list
+    
+    class Node:
+        def __init__(self, value):
+            self.value = value
+            self.next = None
+            self.prev = None
+
+
+    class Queue:
+        # TODO
+
+        def __init__(self):
+            self.head = None
+            self.tail = None
+
+        def append(self, value):
+            # adding to tail
+
+            new_node = Cache.Node(value)
+
+            if not self.head:
+                # if queue is empty
+                self.head = new_node
+                self.tail = new_node
+            else:
+                # if queue is not empty
+                self.tail.next = new_node
+                new_node.prev = self.tail
+                self.tail = new_node
+                
+            return new_node
+
+        def pop(self):
+            # removing from head
+
+            if not self.head:
+                return None
+
+            node_value = self.head.value
+
+            self.head = self.head.next
+
+            if self.head:
+                self.head.prev = None
+            else:
+                self.tail = None
+
+            return node_value
+        
+        def pop(self, node):
+            # removing specific node
+
+            if not node:
+                return None
+            if node.prev:
+                node.prev.next = node.next
+            else:
+                self.head = node.next
+            if node.next:
+                node.next.prev = node.prev
+            else:
+                self.tail = node.prev
+            return node.value
+
+    
 
     def __init__(self, size):
         self.size = size
-        self.catche = dict()
-        self.queue = list()
+        self.cache = dict()
+        self.queue = Queue()
 
+    # TODO
     def write(self, value):
-        pass
+        
+        if (value in self.cache):
 
+            return True  # HIT
+        
+        if len(self.cache) >= self.size:
+            oldest = self.queue.popleft()
+            self.cache.remove(oldest)
+        self.cache.add(value)
+        self.queue.append(value)
+        return False  # MISS
 
+    # TODO
     def read(self, value):
         pass
 
