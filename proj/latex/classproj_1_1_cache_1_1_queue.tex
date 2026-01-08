@@ -1,0 +1,75 @@
+\doxysection{proj.\+Cache.\+Queue Class Reference}
+\label{classproj_1_1_cache_1_1_queue}\index{proj.Cache.Queue@{proj.Cache.Queue}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ \+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+\textbf{ append} (self, value)
+\item 
+\textbf{ pop\+\_\+head} (self)
+\item 
+\textbf{ pop} (self, node)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classproj_1_1_cache_1_1_queue_a58cf8262a2bfc2cc19e8cd04c88fae54} 
+{\bfseries head} = None
+\item 
+\label{classproj_1_1_cache_1_1_queue_a567df7d8d1c91ec9e3b72f37f6d368cd} 
+{\bfseries tail} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Doubly linked list implementation for LRU queue \end{DoxyVerb}
+ 
+
+\label{doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{proj.Cache.Queue@{proj.Cache.Queue}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!proj.Cache.Queue@{proj.Cache.Queue}}
+\doxysubsubsection{\_\_init\_\_()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_1_1_queue_acb05452a75f8a18bc978fd70a091f8af} 
+proj.\+Cache.\+Queue.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize empty queue \end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{proj.Cache.Queue@{proj.Cache.Queue}!append@{append}}
+\index{append@{append}!proj.Cache.Queue@{proj.Cache.Queue}}
+\doxysubsubsection{append()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_1_1_queue_adb625c741564b6690bd2a90b3a77ab0b} 
+proj.\+Cache.\+Queue.\+append (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Append value to the tail of the queue 
+:param value: value to append
+:return: newly created node
+\end{DoxyVerb}
+ \index{proj.Cache.Queue@{proj.Cache.Queue}!pop@{pop}}
+\index{pop@{pop}!proj.Cache.Queue@{proj.Cache.Queue}}
+\doxysubsubsection{pop()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_1_1_queue_a7a6e223a207b41a70e58fffd68f128db} 
+proj.\+Cache.\+Queue.\+pop (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{node}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Remove specific node from the queue
+:param node: node to remove
+:return: value of the removed node
+\end{DoxyVerb}
+ \index{proj.Cache.Queue@{proj.Cache.Queue}!pop\_head@{pop\_head}}
+\index{pop\_head@{pop\_head}!proj.Cache.Queue@{proj.Cache.Queue}}
+\doxysubsubsection{pop\_head()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_1_1_queue_a8ce020109ab9bdf0003b2d0cfe6d669d} 
+proj.\+Cache.\+Queue.\+pop\+\_\+head (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Remove and return value from head of the queue 
+:return: value of the removed node
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+proj.\+py\end{DoxyCompactItemize}

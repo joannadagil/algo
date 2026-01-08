@@ -1,0 +1,13 @@
+\chapter{
+\begin{DoxyEnumerate}
+\item Algorytm zarządzania pamięcią podręczną typu LRU (Least Recently Used) 
+\end{DoxyEnumerate}}
+\label{md__r_e_a_d_m_e}\index{15. Algorytm zarządzania pamięcią podręczną typu LRU (Least Recently Used)@{15. Algorytm zarządzania pamięcią podręczną typu LRU (Least Recently Used)}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+Należy zaprojektować i zaimplementować program symulujący działanie pamięci podręcznej (cache) o zadanym, skończonym rozmiarze. Pamięć podręczna przechowuje ograniczoną liczbę elementów (np. identyfikatorów bloków danych), a dostęp do danych realizowany jest poprzez operacje odczytu (READ) oraz zapisu (WRITE). Program powinien implementować politykę zastępowania LRU (Least Recently Used), zgodnie z którą w przypadku konieczności usunięcia elementu z pełnej pamięci podręcznej usuwany jest element, który był najdawniej używany (tzn. od najdłuższego czasu nie wystąpiła dla niego operacja READ ani WRITE). Program powinien umożliwiać ustawienie rozmiaru pamięci podręcznej, obsługiwać sekwencję operacji READ i WRITE na elementach, przy każdej operacji sprawdzać, czy dany element znajduje się w pamięci podręcznej (rozróżniać trafienia (hit) i chybienia (miss)), aktualizować kolejność elementów w pamięci podręcznej zgodnie z zasadą LRU, w przypadku przepełnienia usuwać element najmniej ostatnio używany, zliczać liczbę trafień i chybień.
+
+W projekcie należy zaimplementować algorytm LRU z wykorzystaniem odpowiednich struktur danych, zapewniających stały czas obsługi operacji (np. tablicy mieszającej oraz listy dwukierunkowej).
+
+Literatura:\+ T.\+H. Cormen, C.\+E. Leiserson, R.\+L. Rivest, Wprowadzenie do algorytmów, WNT, Warszawa, 2001. 

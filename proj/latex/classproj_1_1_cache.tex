@@ -1,0 +1,76 @@
+\doxysection{proj.\+Cache Class Reference}
+\label{classproj_1_1_cache}\index{proj.Cache@{proj.Cache}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \textbf{ Node}
+\item 
+class \textbf{ Queue}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ \+\_\+\+\_\+init\+\_\+\+\_\+} (self, size)
+\item 
+\textbf{ write} (self, value)
+\item 
+\textbf{ read} (self, value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\label{classproj_1_1_cache_ad9d558a90ada0c784ba3a3642ab8a030} 
+{\bfseries size} = size
+\item 
+\label{classproj_1_1_cache_acd26271064fd317336e840452b4c407b} 
+{\bfseries cache} = dict()
+\item 
+\label{classproj_1_1_cache_af7a33658a0b2d000db4a92c095a77a31} 
+{\bfseries queue} = self.\+Queue()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Class implementing a simple LRU cache \end{DoxyVerb}
+ 
+
+\label{doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{proj.Cache@{proj.Cache}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!proj.Cache@{proj.Cache}}
+\doxysubsubsection{\_\_init\_\_()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_abc3b8199e5bf95adebd60b2c8ad430ed} 
+proj.\+Cache.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{size}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize cache with given size; uses a dictionary for fast lookups and a doubly linked list for LRU tracking.
+:param size: maximum size of the cache
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\doxysubsection{Member Function Documentation}
+\index{proj.Cache@{proj.Cache}!read@{read}}
+\index{read@{read}!proj.Cache@{proj.Cache}}
+\doxysubsubsection{read()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_ae26eda3a00ef88304c994b02171fb5b8} 
+proj.\+Cache.\+read (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Read value from the cache
+:param value: value to read
+:return: True if HIT, False if MISS
+\end{DoxyVerb}
+ \index{proj.Cache@{proj.Cache}!write@{write}}
+\index{write@{write}!proj.Cache@{proj.Cache}}
+\doxysubsubsection{write()}
+{\footnotesize\ttfamily \label{classproj_1_1_cache_a773dd5eff35333d6b72d7f23a3dbd760} 
+proj.\+Cache.\+write (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Write value to the cache
+:param value: value to write
+:return: True if HIT, False if MISS
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+proj.\+py\end{DoxyCompactItemize}

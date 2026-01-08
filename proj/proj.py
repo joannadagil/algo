@@ -1,3 +1,6 @@
+'''@package docstring
+'''
+
 ''' 
 write:
 - sprawdza czy wartosc jest w cache
@@ -7,22 +10,34 @@ write:
 '''
 
 class Cache:
+    """ Class implementing a simple LRU cache """
     
     class Node:
+        """ Node for doubly linked list """
         def __init__(self, value):
+            """ 
+            Initialize node with given value; next and prev pointers to None 
+            :param value: value to store in the node
+            """
             self.value = value
             self.next = None
             self.prev = None
 
 
     class Queue:
+        """ Doubly linked list implementation for LRU queue """
     
         def __init__(self):
+            """ Initialize empty queue """
             self.head = None
             self.tail = None
 
         def append(self, value):
-            # adding to tail
+            """ 
+            Append value to the tail of the queue 
+            :param value: value to append
+            :return: newly created node
+            """
 
             new_node = Cache.Node(value)
 
@@ -39,7 +54,10 @@ class Cache:
             return new_node
 
         def pop_head(self):
-            # removing from head
+            """ 
+            Remove and return value from head of the queue 
+            :return: value of the removed node
+            """
 
             if not self.head:
                 return None
@@ -56,7 +74,11 @@ class Cache:
             return node.value
         
         def pop(self, node):
-            # removing specific node
+            """
+            Remove specific node from the queue
+            :param node: node to remove
+            :return: value of the removed node
+            """
 
             if not node:
                 return None
@@ -76,11 +98,20 @@ class Cache:
             return node.value
 
     def __init__(self, size):
+        """
+        Initialize cache with given size; uses a dictionary for fast lookups and a doubly linked list for LRU tracking.
+        :param size: maximum size of the cache
+        """
         self.size = size
         self.cache = dict()
         self.queue = self.Queue()
 
     def write(self, value):
+        """
+        Write value to the cache
+        :param value: value to write
+        :return: True if HIT, False if MISS
+        """
         
         if (value in self.cache):
             # HIT case, so we need to update its position in LRU queue to newest
@@ -109,6 +140,11 @@ class Cache:
 
     # TODO
     def read(self, value):
+        """
+        Read value from the cache
+        :param value: value to read
+        :return: True if HIT, False if MISS
+        """
         pass
 
 
