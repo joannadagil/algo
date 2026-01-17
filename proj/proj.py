@@ -105,6 +105,8 @@ class Cache:
         self.size = size
         self.cache = dict()
         self.queue = self.Queue()
+        self.hits = 0
+        self.misses = 0
 
     def write(self, value):
         """
@@ -113,8 +115,10 @@ class Cache:
         :return: True if HIT, False if MISS
         """
         
-        if (value in self.cache):
+        if value in self.cache:
             # HIT case, so we need to update its position in LRU queue to newest
+
+            self.hits += 1
             
             old_node = self.cache[value]
             self.queue.pop(old_node)
@@ -125,6 +129,8 @@ class Cache:
             return True 
         
         # MISS case
+
+        self.misses += 1
 
         if len(self.cache) >= self.size:
             # cache is full, need to remove oldest
@@ -138,14 +144,46 @@ class Cache:
 
         return False  # MISS
 
-    # TODO
     def read(self, value):
         """
         Read value from the cache
         :param value: value to read
         :return: True if HIT, False if MISS
         """
-        pass
+
+        if value in self.cache:
+            # HIT case - update the position in LRU queue
+
+            self.hits += 1
+
+            old_node = self.cache[value]
+            self.queue.pop(old_node)
+
+            new_node = self.queue.append(value)
+            self.cache[value] = new_node
+
+            return True
+
+        # MISS case - do nothing
+
+        self.misses += 1
+
+        return False
+
+    def display(self):
+        """
+        Display the cache
+        """
+
+        elements = []
+        current = self.queue.head
+
+        while current:
+            elements.append(current.value)
+            current = current.next
+
+        print("Cache [LRU -> MRU]:", " -> ".join(elements) if elements else "EMPTY")
+        print(f"HITS: {self.hits}, MISSES: {self.misses}")
 
 
 
@@ -183,10 +221,12 @@ if __name__ == "__main__":
         if (command[0].upper() == "READ" or command[0].upper() == "R") and len(command) == 2:
             hit = cache.read(command[1])
             print("HIT" if hit else "MISS")
+            cache.display()
 
         elif (command[0].upper() == "WRITE" or command[0].upper() == "W") and len(command) == 2:
             hit = cache.write(command[1])
             print("HIT" if hit else "MISS")
+            cache.display()
 
         else:
             print("Invalid command.")
